@@ -16,45 +16,44 @@ $table->timestamps(); --}}
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-2xl font-semibold leading-tight">Productos</h2>
                         <a href="{{ route('productos.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Nuevo producto
+                            Nuevo Producto
                         </a>
                     </div>
                     <table class="min-w-full bg-white">
                         <thead class="bg-gray-200">
                             <tr>
                                 <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
-                                <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoría</th>
-                                <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio de venta</th>
-                                <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio de compra</th>
-                                <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha de compra</th>
-                                <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Color</th>
-                                <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descripción corta</th>
-                                <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descripción larga</th>
-                                <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                                <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descripción Corta</th>
+                                <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descripción Larga</th>
+                                <th class="w-1/6 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio Compra</th>
+                                <th class="w-1/6 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio Venta</th>
+                                <th class="w-1/6 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoria</th>
+                                <th class="w-1/6 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Color</th>
+                                <th class="w-1/6 px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            
+                            @foreach ($productos as $producto)
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">Nombre</td>
-                                <td class="px-6 py-4 whitespace-nowrap">Categoría</td>
-                                <td class="px-6 py-4 whitespace-nowrap">Precio de venta</td>
-                                <td class="px-6 py-4 whitespace-nowrap">Precio de compra</td>
-                                <td class="px-6 py-4 whitespace-nowrap">Fecha de compra</td>
-                                <td class="px-6 py-4 whitespace-nowrap">Color</td>
-                                <td class="px-6 py-4 whitespace-nowrap">Descripción corta</td>
-                                <td class="px-6 py-4 whitespace-nowrap">Descripción larga</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $producto->nombre }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $producto->descripcion_corta }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $producto->descripcion_larga }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $producto->precio_compra }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $producto->precio_venta }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $producto->categoria->nombre }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $producto->color }}</td>
+
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="" class="text-blue-600 hover:text-blue-900">Ver</a>
-                                    <a href="" class="text-yellow-600 hover:text-yellow-900 ml-4">Editar</a>
-                                    <form action="" method="POST" class="inline">
+                                    <a href="{{ route('productos.show', $producto->id) }}" class="text-blue-600 hover:text-blue-900">Ver</a>
+                                    <a href="{{ route('productos.edit', $producto->id) }}" class="text-yellow-600 hover:text-yellow-900 ml-4">Editar</a>
+                                    <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:text-red-900 ml-4">Borrar</button>
                                     </form>
                                 </td>
                             </tr>
-                           
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

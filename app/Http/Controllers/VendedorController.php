@@ -11,7 +11,7 @@ class VendedorController extends Controller
      */
     public function index()
     {
-        //
+        return view('vendedores.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class VendedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('vendedores.create');
     }
 
     /**

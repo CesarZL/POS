@@ -55,10 +55,6 @@
                     <x-nav-link :href="route('cotizaciones.index')" :active="request()->routeIs('cotizaciones.index')">
                         {{ __('Cotizaciones') }}
                     </x-nav-link>
-
-
-
-
                 </div>
             </div>
 
@@ -113,6 +109,46 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('productos.index')" :active="request()->routeIs('productos.index')">
+                {{ __('Productos') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
+                {{ __('Categorias') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('ventas.index')" :active="request()->routeIs('ventas.index')">
+                {{ __('Ventas') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('inventarios.index')" :active="request()->routeIs('inventarios.index')">
+                {{ __('Inventarios') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
+                {{ __('Clientes') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('compras.index')" :active="request()->routeIs('compras.index')">
+                {{ __('Compras') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('proveedores.index')" :active="request()->routeIs('proveedores.index')">
+                {{ __('Proveedores') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('forma-pago.index')" :active="request()->routeIs('forma-pago.index')">
+                {{ __('Forma de pago') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('vendedores.index')" :active="request()->routeIs('vendedores.index')">
+                {{ __('Vendedores') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('cotizaciones.index')" :active="request()->routeIs('cotizaciones.index')">
+                {{ __('Cotizaciones') }}
             </x-responsive-nav-link>
         </div>
 

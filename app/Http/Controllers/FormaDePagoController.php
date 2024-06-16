@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FormaDePago;
 use Illuminate\Http\Request;
+
+use function Ramsey\Uuid\v1;
 
 class FormaDePagoController extends Controller
 {
@@ -11,7 +14,10 @@ class FormaDePagoController extends Controller
      */
     public function index()
     {
-        //
+        $formasdepago = FormaDePago::all();
+        return view('forma-pago.index', [
+            'formasdepago' => $formasdepago
+        ]);
     }
 
     /**
@@ -19,7 +25,7 @@ class FormaDePagoController extends Controller
      */
     public function create()
     {
-        //
+        return view('forma-pago.create');
     }
 
     /**
@@ -27,38 +33,52 @@ class FormaDePagoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tipo' => 'required'
+        ]);
+
+        FormaDePago::create($request->all());
+
+        return redirect()->route('forma-pago.index');
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(FormaDePago $formaPago)
     {
-        //
+        return view('forma-pago.show', compact('formaPago'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(FormaDePago $formaPago)
     {
-        //
+        return view('forma-pago.edit', compact('formaPago'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, FormaDePago $formaPago)
     {
-        //
+        $request->validate([
+            'tipo' => 'required'
+        ]);
+
+        $formaPago->update($request->all());
+
+        return redirect()->route('forma-pago.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(FormaDePago $formaPago)
     {
-        //
+        $formaPago->delete();
+        return redirect()->route('forma-pago.index');
     }
 }

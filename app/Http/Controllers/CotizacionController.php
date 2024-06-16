@@ -11,7 +11,7 @@ class CotizacionController extends Controller
      */
     public function index()
     {
-        //
+        return view('cotizaciones.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class CotizacionController extends Controller
      */
     public function create()
     {
-        //
+        return view('cotizaciones.create');
     }
 
     /**
